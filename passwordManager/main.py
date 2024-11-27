@@ -14,6 +14,11 @@ def generate_password():
     pyperclip.copy(password)
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def add_password():
+    try:
+        file = open("passwords.txt")
+    except FileNotFoundError:
+        file = open("passwords.txt", "w")
+        file.write("WEBSITE | USERNAME | PASSWORD\n")
     with open("passwords.txt", "a") as file:
         file.write(f"{website_input.get()} | {username_input.get()} | {password_input.get()}\n")
 # ---------------------------- UI SETUP ------------------------------- #
